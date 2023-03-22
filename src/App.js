@@ -5,6 +5,11 @@ import axios from "axios";
 import Cards from "./components/Cards.jsx";
 import NavBar from "./components/NavBar";
 
+import { Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import About from "./components/About";
+import Detail from "./components/Detail";
+
 function App() {
   const [characters, setCharacters] = useState([]);
 
@@ -12,7 +17,7 @@ function App() {
     axios
       .get(`https://rickandmortyapi.com/api/character/${id}`)
       .then(({ data }) => {
-        console.log(":::::",data)
+        console.log(":::::", data);
         if (data.name) {
           let exist = characters.find((ch) => ch.id === data.id);
           if (exist) {
@@ -34,9 +39,24 @@ function App() {
   return (
     <div className="App">
       <NavBar onSearch={onSearch} />
-      <Cards onClose={onClose} characters={characters} />
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route
+          path="/home"
+          element={<Cards onClose={onClose} characters={characters} />}
+        ></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
+      </Routes>
     </div>
   );
 }
 
 export default App;
+
+/*
+Nav debe que aparecer en todas las rutas.
+Cards debe aparecer solo en la ruta /home.
+About debe aparecer solo en la ruta /about.
+Detail debe aparecer solo en la ruta /detail/:id.
+*/
