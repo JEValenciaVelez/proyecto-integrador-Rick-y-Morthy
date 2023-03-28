@@ -11,6 +11,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import About from "./components/About";
 import Detail from "./components/Detail";
+import Favorites from "./components/Favorites";
 
 function App() {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ function App() {
           element={<Cards onClose={onClose} characters={characters} />}
         ></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/favorites" element={<Favorites onClose={onClose} />}></Route>
         <Route path="/detail/:id" element={<Detail />}></Route>
       </Routes>
     </div>
