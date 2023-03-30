@@ -16,8 +16,8 @@ import Favorites from "./components/Favorites";
 function App() {
   const navigate = useNavigate();
   const [access, setAccess] = useState(false);
-  const EMAIL = "eje@gmail.com";
-  const PASSWORD = "@Model101";
+  const EMAIL = "juancho@gmail.com";
+  const PASSWORD = "G@briela7716";
 
   const [characters, setCharacters] = useState([]);
   const location = useLocation();
